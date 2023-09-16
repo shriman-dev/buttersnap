@@ -42,7 +42,7 @@ buttersnap --help
 
 ## Usage & Examples
 
-**Take snapshot in specified sub-directory**
+### Take snapshot in specified sub-directory
 
 ```
 sudo buttersnap --sub-dir manually -s /home/
@@ -55,7 +55,7 @@ Create subvolume '/home/.ButterSnap'
 Create a readonly snapshot of '/home/' in '/home/.ButterSnap/manually/1/13-47_16-09-2023'
 ```
 
-**Take snapshot of custom subvolume to custom location**
+### Take snapshot of custom subvolume to custom location
 
 For example we have a subvolume mounted on /etc
 
@@ -70,7 +70,7 @@ Create subvolume '//etc-snaps'
 Create a readonly snapshot of '/etc' in '/etc-snaps/1/13-50_16-09-2023'
 ```
 
-**Take periodic snapshots with crontab**
+### Take periodic snapshots with crontab
 
 run
 
@@ -90,7 +90,7 @@ daily snapshots of root /
 0 0 * * * /usr/bin/buttersnap -k 7 --sub-dir daily -s /
 ```
 
-**For systemd-timers you can refer to arch wiki**
+### For systemd-timers you can refer to arch wiki
 
 [Systemd/Timers](https://wiki.archlinux.org/title/systemd/Timers)
 

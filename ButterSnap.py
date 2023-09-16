@@ -6,14 +6,16 @@ import subprocess
 
 parser = argparse.ArgumentParser(description='Simple CLI tool for taking Btrfs Snapshots.')
 
-parser.add_argument("-k", "--keep-snapshots", type=int, default=10, metavar="N", help='''
-                                         Keep defined number of snapshots and auto-remove older ones. 
-                                         Disable removal of older snapshots by setting value to 0. (Default: %(default)s)
-                                         ''')
-parser.add_argument("--sub-dir", type=str, metavar="NAME", help="Specify sub-directory to organize snapshots.")
-parser.add_argument('--read-only', metavar="BOOL", action="store", default=True, help="Takes a Boolean value. 'False' enables writable snapshots. (Default: %(default)s)")
-parser.add_argument("-s", "--src-subvolume", type=str, nargs=1, required=True, metavar=("PATH"), help="Path to the source subvolume to take snapshots.")
-parser.add_argument("-d", "--dst-subvolume", type=str, nargs=1, metavar=("PATH"), help="Path to the destination subvolume to hold snapshots. By default, '.ButterSnap' subvolume will be created inside source subvolume when no path is specified.")
+parser.add_argument("-k", "--keep-snapshots", type=int, default=10, metavar="N",
+                    help="Keep defined number of snapshots and auto-remove older ones. Disable removal of older snapshots by setting value to 0. (Default: %(default)s)")
+parser.add_argument("--sub-dir", type=str, metavar="NAME",
+                    help="Specify sub-directory to organize snapshots.")
+parser.add_argument('--read-only', metavar="BOOL", action="store", default=True,
+                    help="Takes a Boolean value. 'False' enables writable snapshots. (Default: %(default)s)")
+parser.add_argument("-s", "--src-subvolume", type=str, nargs=1, required=True, metavar=("PATH"),
+                    help="Path to the source subvolume to take snapshots.")
+parser.add_argument("-d", "--dst-subvolume", type=str, nargs=1, metavar=("PATH"),
+                    help="Path to the destination subvolume to hold snapshots. By default, '.ButterSnap' subvolume will be created inside source subvolume when no path is specified.")
 
 args = parser.parse_args()
 

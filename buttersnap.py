@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-import os
-import datetime
-import argparse
-import subprocess
+import os, datetime, argparse, subprocess
 
 parser = argparse.ArgumentParser(description='Simple CLI tool for taking Btrfs Snapshots.')
 
@@ -50,14 +47,14 @@ def prepare_destination():
     src_path = args.src_subvolume[0]
     if args.dst_subvolume:
         dst_path = args.dst_subvolume[0]
-        not os.path.isdir(dst_path) and subprocess.run(f'btrfs subvolume create {dst_path}', shell=True, check=True)
+        not os.path.isdir(dst_path) and subprocess.run(f'btrfs subvolume create {dst_path}', shell=True, check=True) # create btrfs subvolume if destination path does not exists already
     else:
         dst_path = os.path.join(src_path, '.ButterSnap')
-        not os.path.isdir(dst_path) and subprocess.run(f'btrfs subvolume create {dst_path}', shell=True, check=True)
+        not os.path.isdir(dst_path) and subprocess.run(f'btrfs subvolume create {dst_path}', shell=True, check=True) # setup default destination subvolume
 
     if args.sub_dir:
         dst_path = os.path.join(dst_path, args.sub_dir)
-        not os.path.isdir(dst_path) and os.makedirs(dst_path, exist_ok=True)
+        not os.path.isdir(dst_path) and os.makedirs(dst_path, exist_ok=True) # make sub-dir
 
     return dst_path
 
@@ -76,8 +73,9 @@ def take_numbered_snapshots(ro, src, dst):
 
 def remove_older_snapshots(dst, keep):
     if len(os.listdir(dst)) > keep:
-       old_to_new_list = list_old_to_new(dst)
-       for i in range(len(os.listdir(dst)) - keep):
+       old_to_new_list = list_old_to_new(dst) # store sorted list
+       # iterate over extra dirs (total dirs minus dirs to keep) and start removing from the oldest
+       for i in range(len(os.listdir(dst)) - keep): 
            remove_snapshot(f'{os.path.join(dst, old_to_new_list[i])}/*')
            os.rmdir(os.path.join(dst, old_to_new_list[i]))
 

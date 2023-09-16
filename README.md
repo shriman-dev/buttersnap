@@ -94,3 +94,5 @@ daily snapshots of root /
 
 [Systemd/Timers](https://wiki.archlinux.org/title/systemd/Timers)
 
+Also
+[get sample](https://github.com/shriman-dev/buttersnap/tree/main/systemd-sample)

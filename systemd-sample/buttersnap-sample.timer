@@ -1,0 +1,21 @@
+[Unit]
+Description=Daily_ButterSnap
+
+[Timer]
+OnCalendar=*-*-* 00:00:00
+#Persistent= true
+
+[Install]
+WantedBy=timers.target
+
+
+
+#minutely    →  *-*-* *:*:00
+#hourly      →  *-*-* *:00:00
+#every3hour  →  *-*-* 00/3:00:00
+#daily       →  *-*-* 00:00:00
+#monthly     →  *-*-01 00:00:00
+#weekly      →  Mon *-*-* 00:00:00
+#yearly      →  *-01-01 00:00:00
+
+#systemd-analyze calendar --iterations=2 '*-*-* 00/3:00:00'

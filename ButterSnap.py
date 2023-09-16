@@ -50,6 +50,7 @@ def prepare_destination():
     src_path = args.src_subvolume[0]
     if args.dst_subvolume:
         dst_path = args.dst_subvolume[0]
+        not os.path.isdir(dst_path) and subprocess.run(f'btrfs subvolume create {dst_path}', shell=True, check=True)
     else:
         dst_path = os.path.join(src_path, '.ButterSnap')
         not os.path.isdir(dst_path) and subprocess.run(f'btrfs subvolume create {dst_path}', shell=True, check=True)
@@ -60,6 +61,7 @@ def prepare_destination():
 
     return dst_path
 
+#make function to sortdir
 
 def take_numbered_snapshots(ro, src, dst):
     dt = datetime.datetime.now().strftime('%H-%M_%d-%m-%Y')

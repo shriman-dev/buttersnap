@@ -61,23 +61,25 @@ def prepare_destination():
 
     return dst_path
 
-#make function to sortdir
+
+def list_old_to_new(dir_path):
+    return sorted(os.listdir(dir_path), key=lambda x: os.path.getmtime(os.path.join(dir_path, x)), reverse=False)
+
 
 def take_numbered_snapshots(ro, src, dst):
     dt = datetime.datetime.now().strftime('%H-%M_%d-%m-%Y')
-    list_old_to_new = sorted(os.listdir(dst), key=lambda x: os.path.getmtime(os.path.join(dst, x)), reverse=False)
-    create_numbered_dir = int(os.listdir(dst) and list_old_to_new[-1] or 0) + 1
+    create_numbered_dir = int(os.listdir(dst) and list_old_to_new(dst)[-1] or 0) + 1
     os.mkdir(os.path.join(dst, str(create_numbered_dir)))
-    get_newest_numbered_dir = os.path.join(dst, os.listdir(dst)[-1])
+    get_newest_numbered_dir = os.path.join(dst, list_old_to_new(dst)[-1])
     take_snapshot(ro, src, f'{get_newest_numbered_dir}/{dt}')
 
 
 def remove_older_snapshots(dst, keep):
     if len(os.listdir(dst)) > keep:
-       list_old_to_new = sorted(os.listdir(dst), key=lambda x: os.path.getmtime(os.path.join(dst, x)), reverse=False)
+       old_to_new_list = list_old_to_new(dst)
        for i in range(len(os.listdir(dst)) - keep):
-           remove_snapshot(f'{os.path.join(dst, list_old_to_new[i])}/*')
-           os.rmdir(os.path.join(dst, list_old_to_new[i]))
+           remove_snapshot(f'{os.path.join(dst, old_to_new_list[i])}/*')
+           os.rmdir(os.path.join(dst, old_to_new_list[i]))
 
 
 if __name__ == "__main__":

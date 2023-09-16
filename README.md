@@ -5,7 +5,7 @@ Simple CLI tool for taking Btrfs Snapshots.
 This tool allows you to create, set limit for auto-removal and organize snapshots in specified sub-directories. It is designed to be very minimal and provides a simple way to work with Btrfs snapshots.
 
 ## Options
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 usage: buttersnap [-h] [-k N] [--sub-dir NAME] [--read-only BOOL] -s PATH [-d PATH]
 
 Simple CLI tool for taking Btrfs Snapshots.
@@ -25,4 +25,4 @@ options:
 
   -d PATH, --dst-subvolume PATH
                         Path to the destination subvolume to hold snapshots. By default, '.ButterSnap' subvolume will be created inside source subvolume when no path is specified.
-```
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

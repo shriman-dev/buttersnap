@@ -56,6 +56,7 @@ Create a readonly snapshot of '/home/' in '/home/.ButterSnap/manually/1/13-47_16
 ```
 
 **Take snapshot of custom subvolume to custom location**
+
 For example we have a subvolume mounted on /etc
 
 ```
@@ -70,6 +71,7 @@ Create a readonly snapshot of '/etc' in '/etc-snaps/1/13-50_16-09-2023'
 ```
 
 **Take periodic snapshots with crontab**
+
 run
 
 ```
@@ -89,5 +91,6 @@ daily snapshots of root /
 ```
 
 **For systemd-timers you can refer to arch wiki**
+
 [Systemd/Timers](https://wiki.archlinux.org/title/systemd/Timers)
 

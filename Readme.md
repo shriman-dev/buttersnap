@@ -33,11 +33,11 @@ options:
 
 If not:
 
-Arch Linux `sudo pacman -Sy btrfs-progs`
+Arch Linux     `sudo pacman -Sy btrfs-progs`
 
-Debian/Ubuntu `sudo apt install btrfs-progs`
+Debian/Ubuntu  `sudo apt install btrfs-progs`
 
-Fedora Linux `sudo dnf install btrfs-progs`
+Fedora Linux   `sudo dnf install btrfs-progs`
 
 
 ## Install

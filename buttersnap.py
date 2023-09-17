@@ -45,9 +45,10 @@ def ro_flag():
 
 def prepare_destination():
     src_path = args.src_subvolume[0]
+     # create btrfs subvolume if destination path does not exists already
     if args.dst_subvolume:
         dst_path = args.dst_subvolume[0]
-        not os.path.isdir(dst_path) and subprocess.run(f'btrfs subvolume create {dst_path}', shell=True, check=True) # create btrfs subvolume if destination path does not exists already
+        not os.path.isdir(dst_path) and subprocess.run(f'btrfs subvolume create {dst_path}', shell=True, check=True)
     else:
         dst_path = os.path.join(src_path, '.ButterSnap')
         not os.path.isdir(dst_path) and subprocess.run(f'btrfs subvolume create {dst_path}', shell=True, check=True) # setup default destination subvolume

@@ -29,9 +29,7 @@ options:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ## Dependencies
-* btrfs-progs (most likely available on your installation)
-
-If not:
+* btrfs-progs
 
 Arch Linux
 ```
